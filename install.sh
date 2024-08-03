@@ -25,7 +25,7 @@ git config --global alias.gone "! git checkout main && git fetch -pa && git pull
 # Codespaces sets the env vars for you
 # I override these values in my_zshrc with a "full PAT" if it exists
 # GITHUB_PAT only works in the Codespace repo by default
-# sudo git config --system credential.helper '!f() { sleep 1; echo "username=${GIT_COMMITTER_NAME}"; echo "password=${GITHUB_TOKEN}"; }; f'
+sudo git config --system credential.helper '!f() { sleep 1; echo "username=${GIT_COMMITTER_NAME}"; echo "password=${GITHUB_TOKEN}"; }; f'
 
 # this is a cool feature that lets you use "git clone b://dotfiles"
 # instead of "git clone https://github.com/A2Y-D5L/dotfiles"
@@ -39,3 +39,17 @@ git config --global url.https://github.com/retaildevcrews/.insteadOf r://
 if [[ -n $PAT ]]; then
   docker login ghcr.io -u A2Y-D5L -p $PAT
 fi
+
+if ! command -v fc-cache &> /dev/null
+  then
+    echo "fontconfig is not installed. Installing fontconfig..."
+    sudo apt-get update
+    sudo apt-get install -y fontconfig
+  else
+    echo "fontconfig is already installed."
+  fi
+
+mkdir -p $HOME/.local/share/fonts
+cp $HOME/dotfiles/fonts/* $HOME/.local/share/fonts/
+cp $HOME/fonts/* $HOME/.local/share/fonts/
+fc-cache -f -v
