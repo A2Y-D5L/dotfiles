@@ -34,8 +34,8 @@ export PATH=$PATH:$HOME/dotfiles/bin
 # set GitHub info for codespaces
 
 # change this to your name / email
-export GIT_COMMITTER_NAME=bartr
-export GIT_COMMITTER_EMAIL=bartr@microsoft.com
+export GIT_COMMITTER_NAME=A2Y-D5L
+export GIT_COMMITTER_EMAIL=00.disk-turbo@icloud.com
 
 # PAT is a GitHub Codespace secret that I set
 # see readme.md for more details

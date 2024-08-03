@@ -11,8 +11,8 @@ echo "source $HOME/dotfiles/my_zshrc" >> $HOME/.zshrc
 mkdir -p $HOME/.local/bin
 
 # configure git (change user.*)
-sudo git config --system user.name bartr
-sudo git config --system user.email bartr@microsoft.com
+sudo git config --system user.name A2Y-D5L
+sudo git config --system user.email 00.disk-turbo@icloud.com
 git config --global core.whitespace blank-at-eol,blank-at-eof,space-before-tab
 git config --global pull.rebase false
 git config --global init.defaultbranch main
@@ -28,8 +28,8 @@ git config --global alias.gone "! git checkout main && git fetch -pa && git pull
 # sudo git config --system credential.helper '!f() { sleep 1; echo "username=${GIT_COMMITTER_NAME}"; echo "password=${GITHUB_TOKEN}"; }; f'
 
 # this is a cool feature that lets you use "git clone b://dotfiles"
-# instead of "git clone https://github.com/bartr/dotfiles"
-git config --global url.https://github.com/bartr/.insteadOf b://
+# instead of "git clone https://github.com/A2Y-D5L/dotfiles"
+git config --global url.https://github.com/A2Y-D5L/.insteadOf b://
 git config --global url.https://github.com/cse-labs/.insteadOf c://
 git config --global url.https://github.com/.insteadOf g://
 git config --global url.https://github.com/k8s-labs/.insteadOf k://
@@ -37,5 +37,5 @@ git config --global url.https://github.com/retaildevcrews/.insteadOf r://
 
 # login to GitHub container registry if $PAT set
 if [[ -n $PAT ]]; then
-  docker login ghcr.io -u bartr -p $PAT
+  docker login ghcr.io -u A2Y-D5L -p $PAT
 fi
