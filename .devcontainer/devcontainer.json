@@ -44,13 +44,3 @@
 	// Use 'postStartCommand' to run commands after the container starts.
 	"postStartCommand": "/bin/bash -c .devcontainer/post-start.sh"
 }
-// devcontainer.json
-{
-	"name": "My Codespace",
-	"settings": {
-		"dotfiles.repository": "https://github.com/yourusername/dotfiles",
-		"dotfiles.targetPath": "~/dotfiles",
-		"dotfiles.installCommand": "~/dotfiles/install_fonts.sh"
-	},
-	"postCreateCommand": "source ~/dotfiles/install_fonts.sh"
-}
