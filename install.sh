@@ -4,8 +4,8 @@
 ln -s /workspaces/.codespaces/.persistedshare/dotfiles $HOME/dotfiles
 
 # source the my_zshrc from dotfiles
-echo "" >> $HOME/.zshrc
-echo "source $HOME/dotfiles/my_zshrc" >> $HOME/.zshrc
+echo "" >>$HOME/.zshrc
+echo "source $HOME/dotfiles/my_zshrc" >>$HOME/.zshrc
 
 # make the dir if it doesn't exist
 mkdir -p $HOME/.local/bin
@@ -29,26 +29,27 @@ sudo git config --system credential.helper '!f() { sleep 1; echo "username=${GIT
 
 # this is a cool feature that lets you use "git clone b://dotfiles"
 # instead of "git clone https://github.com/A2Y-D5L/dotfiles"
-git config --global url.https://github.com/A2Y-D5L/.insteadOf b://
-git config --global url.https://github.com/cse-labs/.insteadOf c://
+git config --global url.https://github.com/A2Y-D5L/.insteadOf a2y://
 git config --global url.https://github.com/.insteadOf g://
 git config --global url.https://github.com/k8s-labs/.insteadOf k://
-git config --global url.https://github.com/retaildevcrews/.insteadOf r://
 
 # login to GitHub container registry if $PAT set
 if [[ -n $PAT ]]; then
   docker login ghcr.io -u A2Y-D5L -p $PAT
 fi
 
-if ! command -v fc-cache &> /dev/null
-  then
-    echo "fontconfig is not installed. Installing fontconfig..."
-    sudo apt-get update
-    sudo apt-get install -y fontconfig
-  else
-    echo "fontconfig is already installed."
-  fi
-
+# install fontconfig
+if
+  ! command -v fc-cache &
+  >/dev/null
+then
+  echo "fontconfig is not installed. Installing fontconfig..."
+  sudo apt-get update
+  sudo apt-get install -y fontconfig
+else
+  echo "fontconfig is already installed."
+fi
+# install fonts from dotfiles
 mkdir -p $HOME/.local/share/fonts
 cp $HOME/dotfiles/fonts/* $HOME/.local/share/fonts/
 cp $HOME/fonts/* $HOME/.local/share/fonts/
